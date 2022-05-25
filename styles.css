@@ -1,0 +1,28 @@
+.dropDown-Content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+}
+
+.dropDown:hover .dropDown-Content {
+    display: flex;
+    flex-direction: column;
+}
+
+#gridContainer {
+    height: 80vh;
+    width: 80vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.gridSquare {
+    flex: 1;
+    border: .5px solid gray;
+}
