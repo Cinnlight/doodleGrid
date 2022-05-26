@@ -9,24 +9,49 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Header -->
+
     <header class="header">
         <div class="dropDown">
-            <button class="dropButton">Hamborger
+            <button class="btn" id="dropButton">Hamborger
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropDown-Content">
-                <button id="resetCanvas">New Drawing</button>
+                <button class="btn" id="resetCanvas">Reset Canvas</button>
                 <div id="resizeContainer">
-                    <button id="resizeCanvas">Resize Canvas</button>
+                    <button class="btn" id="resizeCanvas">Resize Canvas</button>
                 </div>
-                <button>About</button>
+                <button class="btn" id="aboutBtn">About</button>
             </div>
         </div>
+        <div id="logo">Logo</div>
     </header>
 
-    <div id="gridContainer"></div>
+    <!-- Content/Body -->
 
-    <footer></footer>
+    <div id="contentContainer">
+        <div class="contentMenu" id="menuLeft"></div>
+        <div id="gridContainer"></div>
+        <div class="contentMenu" id="menuRight"></div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer"></footer>
     
 </body>
 </html>
+
+                <!-- May be used later to convert from prompt to select-box -->
+
+                    <!-- <div id="resize-PopOut"> -->
+                        <!-- <select name="canvasSize" id="canvasSizeDropdown">
+                            <option value="8">8x8</option>
+                            <option value="16">16x16</option>
+                            <option value="32">32x32</option>
+                            <option value="64">64x64</option>
+                            <option value="128">128x128</option>
+                            <option value="custom">Select Custom Size</option>
+                        </select> -->
+                    <!-- </div> -->
