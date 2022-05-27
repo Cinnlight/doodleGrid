@@ -2,12 +2,13 @@
 
 let buttons = document.querySelectorAll("button");
 let gridContainer = document.querySelector("#gridContainer");
-let gridSquare = document.querySelectorAll(".gridSquare");
+let gridSquare = document.querySelector(".gridSquare");
+let colorBtn = document.querySelector(".colorBtn");
 
-// ----- Interactive button-click scripting ----- //
+// ----- Button press handler and button events ----- //
 
 buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', () => {
 
         // Reset canvas to original size & clear canvas
         if (button.id === "resetCanvas") {
@@ -31,37 +32,43 @@ buttons.forEach((button) => {
             }
         }
 
+        // Change color when Set Color button is pressed
+        if (button.id === "setColor") {
+            userColor = document.getElementById("colorChoice").value;
+        }
+
+        if (button.className === "colorBtn") {
+            userColor = button.id;
+        }
+
     });
 });
 
 // ----- Mouse up/down scripting to track mouse state ----- //
 
 let mouseDown = 0;
-document.body.addEventListener('mousedown', (event) => {
+document.body.addEventListener('mousedown', () => {
     ++mouseDown;
+    if (mouseDown > 1 || mouseDown < 0) {
+        mouseDown = 0;
+    }
     console.log('click!')
 });
 
-document.body.addEventListener('mouseup', (event) => {
+document.body.addEventListener('mouseup', () => {
     --mouseDown;
+    if (mouseDown > 1 || mouseDown < 0) {
+        mouseDown = 0;
+    }
     console.log('un-click!')
 });
-
-if (mouseDown > 1 || mouseDown < 0) {
-    mouseDown = 0;
-    console.log('reset')
-}
-
-if (mouseDown == 1) {
-    document.gridSquare.addEventListener('mouseover', (event) => {
-        gridSquare.target.style.background = black;
-        console.log('draw!')
-    });
-}
-
 // ----- Function to: ----- //
 // Accept user input
 // Generate a square grid of divs based on user input
+// Add event-listener to gridSquare
+// Draw while mouse is clicked in user-selected color
+
+let userColor = "black";
 
 function makeGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
@@ -69,6 +76,15 @@ function makeGrid(gridSize) {
         row.className = "row";
         for(let x = 1; x <= gridSize; x++) {
             let cell = document.createElement("div");
+            cell.addEventListener('mouseenter', () => {
+                if (mouseDown == 1) {
+                    cell.style.background = userColor;
+                    console.log(`${i},${x}`);
+                }
+            });
+            cell.addEventListener('mousedown', () => {
+                cell.style.background = userColor;
+            });
             cell.className = "gridSquare";
             row.appendChild(cell);
         }

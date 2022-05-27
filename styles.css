@@ -8,6 +8,10 @@ body {
     height: 100vh;
 }
 
+/****** -------------- ******/
+/****** Header content ******/
+/****** -------------- ******/
+
 .header {
     display: flex;
     background-color: #3b3b3b;
@@ -45,18 +49,42 @@ body {
     flex: 1;
     padding-right: 12rem;
 }
+/****** ---------- ******/
 
+
+/****** ------------- ******/
+/****** Content/body  ******/
+/****** ------------- ******/
 #contentContainer {
     display: flex;
     flex: 1;
     min-width: min-content;
     justify-content: space-between;
+    -webkit-user-drag: none;
 }
 
 .contentMenu {
+    display: flex;
+    flex-direction: column;
     background-color: #3b3b3b;
-
     width: 5rem;
+}
+
+#tools {
+    color: #f9f9f9;
+    border-bottom: solid 1px #121212;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+label {
+    color: #f9f9f9;
+    text-align: center;
+}
+
+.colorBtn {
+    height: 2rem;
+    width: 2rem;
 }
 
 #gridContainer {
@@ -71,6 +99,13 @@ body {
     align-self: center;
 
     background-color: whitesmoke;
+    border: solid 2px #f9f9f9;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none; /* This one prevents dragging in Chrome */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .row {
@@ -81,26 +116,44 @@ body {
 .gridSquare {
     flex: 1;
     border: .5px solid rgba(128, 128, 128, 0.5);
+    -webkit-user-drag: none;
 }
+/****** ---------- ******/
 
+/****** ------ ******/
+/****** footer ******/
+/****** ------ ******/
 .footer {
     height: 1.5rem;
     border-top: solid 1px #121212;
     background-color: #3b3b3b;
 }
 
-
-
-
-
-
-/* May be used later for select-box instead of prompt  */
-/* #canvasSizeDropdown {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
+/****** --------------------- ******/
+/* Quick Color-pick colors/styling */
+/****** --------------------- ******/
+#black {
+    background-color: black;
 }
-
-#resizeCanvas:hover #canvasSizeDropdown {
-    display: flex;
-} */
+#red {
+    background-color: red;
+}
+#orange {
+    background-color: orange;
+}
+#yellow {
+    background-color: yellow;
+}
+#green {
+    background-color: green;
+}
+#cyan {
+    background-color: cyan;
+}
+#blue {
+    background-color: blue;
+}
+#purple {
+    background-color: purple;
+}
+/****** --------------------- ******/

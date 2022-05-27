@@ -14,7 +14,7 @@
 
     <header class="header">
         <div class="dropDown">
-            <button class="btn" id="dropButton">Hamborger
+            <button class="btn" id="dropButton">Menu
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropDown-Content">
@@ -31,8 +31,27 @@
     <!-- Content/Body -->
 
     <div id="contentContainer">
-        <div class="contentMenu" id="menuLeft"></div>
+
+        <div class="contentMenu" id="menuLeft">
+            <div id="tools">Tools</div>
+            <div id="colorMenu">
+                <label for="colorPicker">Color Picker:</label>
+                <input type="color" id="colorChoice">
+                <button id="setColor">*</button>
+                <br>
+                <button class="colorBtn" id="black"></button>
+                <button class="colorBtn" id="red"></button>
+                <button class="colorBtn" id="orange"></button>
+                <button class="colorBtn" id="yellow"></button>
+                <button class="colorBtn" id="green"></button>
+                <button class="colorBtn" id="cyan"></button>
+                <button class="colorBtn" id="blue"></button>
+                <button class="colorBtn" id="purple"></button>
+            </div>
+        </div>
+
         <div id="gridContainer"></div>
+
         <div class="contentMenu" id="menuRight"></div>
     </div>
 
