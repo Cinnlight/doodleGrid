@@ -28,6 +28,14 @@
         <div id="logo">Logo</div>
     </header>
 
+    <!-- <div class="overlay" id="aboutOverlay">
+        <div id="overlayTxt">  
+            <div id="githubLink">Check out my source code here: https://github.com/Cinnlight/doodleGrid</div>
+            <div id="attributeTxt">Special thanks to <a href="https://www.flaticon.com/" title="flaticon website">flaticon.com</a> for the awesome icons. <br> 
+                <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Iconjam - Flaticon</a></div>
+        </div>
+    </div> -->
+
     <!-- Content/Body -->
 
     <div id="contentContainer">
@@ -35,9 +43,11 @@
         <div class="contentMenu" id="menuLeft">
             <div id="tools">Tools</div>
             <div id="colorMenu">
-                <label for="colorPicker">Color Picker:</label>
+                <div id="colorChoiceTxtContainer">
+                    <label for="colorChoice">Color Picker:</label>
+                </div>
                 <input type="color" id="colorChoice">
-                <button id="setColor">*</button>
+                <button id="setColor"></button>
                 <br>
                 <button class="colorBtn" id="black"></button>
                 <button class="colorBtn" id="red"></button>
@@ -48,6 +58,8 @@
                 <button class="colorBtn" id="blue"></button>
                 <button class="colorBtn" id="purple"></button>
             </div>
+            <div id="eraserTxt">Eraser</div>
+            <button id="eraserBtn">Erase</button>
         </div>
 
         <div id="gridContainer"></div>

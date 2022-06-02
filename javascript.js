@@ -4,6 +4,8 @@ let buttons = document.querySelectorAll("button");
 let gridContainer = document.querySelector("#gridContainer");
 let gridSquare = document.querySelector(".gridSquare");
 let colorBtn = document.querySelector(".colorBtn");
+let setColorBtn = document.querySelector("#setColor");
+let colorPicker = document.querySelector("#colorChoice");
 
 // ----- Button press handler and button events ----- //
 
@@ -41,8 +43,19 @@ buttons.forEach((button) => {
             userColor = button.id;
         }
 
+        if (button.id === "eraserBtn") {
+            userColor = "whitesmoke";
+        }
     });
 });
+
+// Set color-picker accept btn to current color-picker color
+
+colorPicker.addEventListener("mouseleave", () => {
+    setColorBtn.style.background = document.getElementById("colorChoice").value;
+});
+
+setColorBtn.style.background = document.getElementById("colorChoice").value;
 
 // ----- Mouse up/down scripting to track mouse state ----- //
 
