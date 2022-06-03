@@ -8,6 +8,7 @@ let setColorBtn = document.querySelector("#setColor");
 let colorPicker = document.querySelector("#colorChoice");
 
 // ----- Button press handler and button events ----- //
+let currentSize;
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -15,7 +16,11 @@ buttons.forEach((button) => {
         // Reset canvas to original size & clear canvas
         if (button.id === "resetCanvas") {
             if (confirm("Are you sure? This will delete all progress.") == true) {
-                gridSize = 32;
+                if (currentSize != null) {
+                    gridSize = currentSize;
+                } else { 
+                    gridSize = 32;
+                }
                 removeChildren(gridContainer);
                 makeGrid(gridSize);
             }
@@ -27,6 +32,7 @@ buttons.forEach((button) => {
             if (gridSize <= 100 && gridSize > 0) {
                 removeChildren(gridContainer);
                 makeGrid(gridSize);
+                currentSize = gridSize;
             } else if (gridSize === null || gridSize === "") {
                 return;
             } else {
@@ -133,7 +139,7 @@ for (let i = 0; i < 1; i++) {
 // Function to toggle 'about' overlay
 
 function overlayOn() {
-    document.getElementById("aboutOverlay").style.display = "block";
+    document.getElementById("aboutOverlay").style.display = "flex";
 }
 
 function overlayOff() {

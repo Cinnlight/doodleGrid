@@ -59,10 +59,10 @@ body {
     position: fixed;
     display: none;
     flex-direction: column;
-    width: 75%;
-    height: 75%;
-    top: 13.5%;
-    left: 13.5%;
+    align-self: center;
+    width: 75vh;
+    height: 75vh;
+    top: 15vh;
     background-color: #121212d0;
 }
 
@@ -81,14 +81,17 @@ body {
     position: absolute;
     top: 45%;
     left: 50%;
-    font-size: 24px;
+    padding: 1rem;
+    border: solid 1px #3b3b3b;
+    background-color: #121212a1;
+    font-size: 1.1rem;
     color: #f9f9f9;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
 
 .overlayTxt .attributeSmallTxt {
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 a {
