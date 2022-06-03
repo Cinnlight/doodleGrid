@@ -46,6 +46,14 @@ buttons.forEach((button) => {
         if (button.id === "eraserBtn") {
             userColor = "whitesmoke";
         }
+
+        // Open/close about-overlay
+        if (button.id === "aboutBtn") {
+            overlayOn();
+        }
+        if (button.id === "overlayExitBtn") {
+            overlayOff();
+        }
     });
 });
 
@@ -120,4 +128,14 @@ function removeChildren(parent) {
 for (let i = 0; i < 1; i++) {
     gridSize = 32;
     makeGrid(gridSize);
+}
+
+// Function to toggle 'about' overlay
+
+function overlayOn() {
+    document.getElementById("aboutOverlay").style.display = "block";
+}
+
+function overlayOff() {
+    document.getElementById("aboutOverlay").style.display = "none";
 }

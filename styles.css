@@ -6,7 +6,6 @@ body {
     flex-direction: column;
 
     height: 100vh;
-    user-drag: none;
     -webkit-user-drag: none;
     user-select: none; /* This one prevents dragging in Chrome */
     -moz-user-select: none;
@@ -55,6 +54,47 @@ body {
     flex: 1;
     padding-right: 12rem;
 }
+
+#aboutOverlay {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    width: 75%;
+    height: 75%;
+    top: 13.5%;
+    left: 13.5%;
+    background-color: #121212d0;
+}
+
+#overlayHeader {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#overlayTxtContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.overlayTxt {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    font-size: 24px;
+    color: #f9f9f9;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.overlayTxt .attributeSmallTxt {
+    font-size: 12px;
+}
+
+a {
+    color: #f9f9f9;
+}
+
 /****** ---------- ******/
 
 
@@ -83,6 +123,10 @@ body {
     padding: 1rem 0;
 }
 
+#colorMenu {
+    margin-bottom: 1rem;
+}
+
 #colorChoiceTxtContainer {
     padding-top: .5rem;
     display: flex;
@@ -108,10 +152,6 @@ label {
     text-align: center;
 }
 
-#eraserBtn {
-    
-}
-
 #gridContainer {
     height: 70vh;
     width: 70vh;
@@ -124,8 +164,7 @@ label {
     align-self: center;
 
     background-color: whitesmoke;
-    border: solid 2px #f9f9f9;
-    user-drag: none;
+    border: solid 2px #3b3b3b;
     -webkit-user-drag: none;
     user-select: none; /* This one prevents dragging in Chrome */
     -moz-user-select: none;
