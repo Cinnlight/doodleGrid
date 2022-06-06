@@ -48,11 +48,22 @@ body {
 }
 
 #logo {
+    display: flex;
+    flex-direction: row;
     color: whitesmoke;
     text-align: center;
     align-self: center;
+    justify-content: center;
     flex: 1;
     padding-right: 12rem;
+}
+
+#logoImg {
+    width: 32px;
+}
+
+#logoTxt {
+    font-size: 1.5rem;
 }
 
 #aboutOverlay {
@@ -97,20 +108,12 @@ body {
 a {
     color: #f9f9f9;
 }
-
 /****** ---------- ******/
 
 
-/****** ------------- ******/
-/****** Content/body  ******/
-/****** ------------- ******/
-#contentContainer {
-    display: flex;
-    flex: 1;
-    min-width: min-content;
-    justify-content: space-between;
-    -webkit-user-drag: none;
-}
+/****** ---------- ******/
+/****** Side Bars  ******/
+/****** ---------- ******/
 
 .contentMenu {
     display: flex;
@@ -133,6 +136,11 @@ a {
 #colorChoiceTxtContainer {
     padding-top: .5rem;
     display: flex;
+    justify-content: center;
+}
+
+#colorTxt {
+    text-align: center;
 }
 
 label {
@@ -153,6 +161,27 @@ label {
 #eraserTxt {
     color: #f9f9f9;
     text-align: center;
+}
+
+#eraserBtn {
+    margin-right: 1rem;
+}
+
+#eraserImg {
+    width: 32px;
+}
+/****** ---------- ******/
+
+
+/****** ------------- ******/
+/****** Grid/Middle  ******/
+/****** ------------- ******/
+#contentContainer {
+    display: flex;
+    flex: 1;
+    min-width: min-content;
+    justify-content: space-between;
+    -webkit-user-drag: none;
 }
 
 #gridContainer {
@@ -187,6 +216,7 @@ label {
 }
 /****** ---------- ******/
 
+
 /****** ------ ******/
 /****** footer ******/
 /****** ------ ******/
@@ -194,7 +224,11 @@ label {
     height: 1.5rem;
     border-top: solid 1px #121212;
     background-color: #3b3b3b;
+    color: #f9f9f9;
+    text-align: center;
 }
+/****** ------ ******/
+
 
 /****** --------------------- ******/
 /* Quick Color-pick colors/styling */

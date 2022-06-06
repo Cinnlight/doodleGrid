@@ -25,14 +25,16 @@
                 <button class="btn" id="aboutBtn">About</button>
             </div>
         </div>
-        <div id="logo">Logo</div>
+        <div id="logo"><img id="logoImg" src="images/rainbow.png" alt="a pixel art rainbow">
+            <div id="logoTxt">Doodle Grid</div>
+        </div>
     </header>
 
     <div class="overlay" id="aboutOverlay">
         <div id="overlayHeader">
             <button id="overlayExitBtn">X</button>
         </div>
-        <div id="overlayTxtContainer">  
+        <div id="overlayTxtContainer">
             <div class="overlayTxt">This project was made possible
                 by the awesome folks over at 
                 <a href="https://www.theodinproject.com/" 
@@ -42,10 +44,12 @@
                 <a href="https://github.com/Cinnlight/doodleGrid" 
                 title="github source code">here.</a></em> 
                 <br><br>
-                Special thanks to <a href="https://www.flaticon.com/" 
-                title="flaticon website">flaticon.com</a> for the awesome icons. <br> 
-                <div class="attributeSmallTxt"><a href="https://www.flaticon.com/free-icons/eraser" 
-                title="eraser icons">Eraser icons created by Iconjam - Flaticon</a></div>
+                Special thanks to <a href="https://www.flaticon.com/" title="flaticon website">flaticon.com</a> 
+                for the awesome icons: 
+                <br> 
+                <div class="attributeSmallTxt"><a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Iconjam - Flaticon</a></div>
+                <br>
+                <a href="https://www.flaticon.com/free-icons/rainbow" title="rainbow icons">Rainbow icons created by Freepik - Flaticon</a>
             </div>
         </div>
     </div>
@@ -58,7 +62,7 @@
             <div id="tools">Tools</div>
             <div id="colorMenu">
                 <div id="colorChoiceTxtContainer">
-                    <label for="colorChoice">Color Picker:</label>
+                    <label id="colorTxt" for="colorChoice">Colors:</label>
                 </div>
                 <input type="color" id="colorChoice">
                 <button id="setColor"></button>
@@ -72,8 +76,7 @@
                 <button class="colorBtn" id="blue"></button>
                 <button class="colorBtn" id="purple"></button>
             </div>
-            <div id="eraserTxt">Eraser</div>
-            <button id="eraserBtn">Erase</button>
+            <button id="eraserBtn"><img id="eraserImg" src="images/eraser.png" alt="icon of an eraser"></button>
         </div>
 
         <div id="gridContainer"></div>
@@ -83,20 +86,9 @@
 
     <!-- Footer -->
 
-    <footer class="footer"></footer>
+    <footer class="footer">
+        Cinnlight @<a href="https://github.com/Cinnlight/doodleGrid" title="github link">github</a>
+    </footer>
     
 </body>
 </html>
-
-                <!-- May be used later to convert from prompt to select-box -->
-
-                    <!-- <div id="resize-PopOut"> -->
-                        <!-- <select name="canvasSize" id="canvasSizeDropdown">
-                            <option value="8">8x8</option>
-                            <option value="16">16x16</option>
-                            <option value="32">32x32</option>
-                            <option value="64">64x64</option>
-                            <option value="128">128x128</option>
-                            <option value="custom">Select Custom Size</option>
-                        </select> -->
-                    <!-- </div> -->
