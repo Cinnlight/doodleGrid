@@ -6,9 +6,22 @@ let gridSquare = document.querySelector(".gridSquare");
 let colorBtn = document.querySelector(".colorBtn");
 let setColorBtn = document.querySelector("#setColor");
 let colorPicker = document.querySelector("#colorChoice");
+let toggleShader = document.querySelector("#toggleShader");
+let toggleBrighten = document.querySelector("#toggleBrighten");
+let toggleGrid = document.querySelector("#toggleGrid");
+
+// ----- Color picker styling and handling ----- //
+
+colorPicker.addEventListener('input', () => {
+    drawState = "draw";
+    colorPicker.style.setProperty('--color', colorPicker.value);
+    userColor = colorPicker.value;
+});
 
 // ----- Button press handler and button events ----- //
+
 let currentSize;
+let gridToggleStatus = 0;
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -19,7 +32,7 @@ buttons.forEach((button) => {
                 if (currentSize != null) {
                     gridSize = currentSize;
                 } else { 
-                    gridSize = 32;
+                    gridSize = 16;
                 }
                 removeChildren(gridContainer);
                 makeGrid(gridSize);
@@ -41,15 +54,13 @@ buttons.forEach((button) => {
         }
 
         // Change color when Set Color button is pressed
-        if (button.id === "setColor") {
-            userColor = document.getElementById("colorChoice").value;
-        }
-
         if (button.className === "colorBtn") {
+            drawState = "draw";
             userColor = button.id;
         }
 
         if (button.id === "eraserBtn") {
+            drawState = "draw"
             userColor = "whitesmoke";
         }
 
@@ -60,16 +71,73 @@ buttons.forEach((button) => {
         if (button.id === "overlayExitBtn") {
             overlayOff();
         }
+
+        // Toggle grid-lines
+        if (button.id === "toggleGrid") {
+            if (gridToggleStatus == 0) {
+                let squares = document.getElementsByClassName("gridSquare");
+                for (i = 0; i < squares.length; i++) {
+                    squares[i].style.border = "none";
+                }
+                gridToggleStatus++;
+            } else {
+                let squares = document.getElementsByClassName("gridSquare");
+                for (i = 0; i < squares.length; i++) {
+                    squares[i].style.border = ".5px solid rgba(128, 128, 128, 0.5)";
+                }
+                gridToggleStatus = 0;
+            }
+        }
+
+        // Toggle shader
+        if (button.id === "toggleShader") {
+            if (drawState != "shade") {
+                toggleShader.classList.add("toggleBtnActive");
+                toggleBrighten.classList.remove("toggleBtnActive");
+            } else {
+                toggleShader.classList.remove("toggleBtnActive");
+            }
+            switch (drawState) {
+                case "draw":
+                    drawState = "shade";
+                    break;
+                case "shade":
+                    drawState = "draw";
+                    break;
+                case "brighten":
+                    drawState = "shade";
+                    break;
+                default:
+                    drawState = "draw";
+                    console.log("Error - toggleShader had an invalid case");
+            }
+        }
+
+        // Toggle brighten
+        if (button.id === "toggleBrighten") {
+            if (drawState != "brighten") {
+                toggleBrighten.classList.add("toggleBtnActive");
+                toggleShader.classList.remove("toggleBtnActive");
+            } else {
+                toggleBrighten.classList.remove("toggleBtnActive");
+            }
+            switch (drawState) {
+                case "draw":
+                    drawState = "brighten";
+                    break;
+                case "shade":
+                    drawState = "brighten";
+                    break;
+                case "brighten":
+                    drawState = "draw";
+                    break;
+                default:
+                    drawState = "draw";
+                    console.log("Error - toggleShader had an invalid case");
+            }
+        }
     });
 });
-
-// Set color-picker accept btn to current color-picker color
-
-colorPicker.addEventListener("mouseleave", () => {
-    setColorBtn.style.background = document.getElementById("colorChoice").value;
-});
-
-setColorBtn.style.background = document.getElementById("colorChoice").value;
 
 // ----- Mouse up/down scripting to track mouse state ----- //
 
@@ -79,7 +147,6 @@ document.body.addEventListener('mousedown', () => {
     if (mouseDown > 1 || mouseDown < 0) {
         mouseDown = 0;
     }
-    console.log('click!')
 });
 
 document.body.addEventListener('mouseup', () => {
@@ -87,7 +154,6 @@ document.body.addEventListener('mouseup', () => {
     if (mouseDown > 1 || mouseDown < 0) {
         mouseDown = 0;
     }
-    console.log('un-click!')
 });
 // ----- Function to: ----- //
 // Accept user input
@@ -96,6 +162,8 @@ document.body.addEventListener('mouseup', () => {
 // Draw while mouse is clicked in user-selected color
 
 let userColor = "black";
+let drawState = "draw";
+let shaderColor;
 
 function makeGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
@@ -105,12 +173,44 @@ function makeGrid(gridSize) {
             let cell = document.createElement("div");
             cell.addEventListener('mouseenter', () => {
                 if (mouseDown == 1) {
-                    cell.style.background = userColor;
-                    console.log(`${i},${x}`);
+                    let col;
+                    switch (drawState) {
+                        case "draw":
+                            cell.style.background = userColor;
+                            break;
+                        case "shade":
+                            col = window.getComputedStyle(cell).getPropertyValue('background-color');
+                            col = RGB_Log_Shade(-.20, col);
+                            cell.style.background = col;
+                            break;
+                        case "brighten":
+                            col = window.getComputedStyle(cell).getPropertyValue('background-color');
+                            col = RGB_Linear_Shade(.10, col);
+                            cell.style.background = col;
+                            break;
+                        default:
+                            console.log("Error - drawState value invalid");
+                    }
                 }
             });
             cell.addEventListener('mousedown', () => {
-                cell.style.background = userColor;
+                switch (drawState) {
+                    case "draw":
+                        cell.style.background = userColor;
+                        break;
+                    case "shade":
+                        col = window.getComputedStyle(cell).getPropertyValue('background-color');
+                        col = RGB_Log_Shade(-.20, col);
+                        cell.style.background = col;
+                        break;
+                    case "brighten":
+                        col = window.getComputedStyle(cell).getPropertyValue('background-color');
+                        col = RGB_Linear_Shade(.10, col);
+                        cell.style.background = col;
+                        break;
+                    default:
+                        console.log("Error - drawState value invalid");
+                }
             });
             cell.className = "gridSquare";
             row.appendChild(cell);
@@ -119,7 +219,7 @@ function makeGrid(gridSize) {
     }
 }
 
-// Function to:
+// ----- Function to: ----- //
 // Remove all children from parent node
 
 function removeChildren(parent) {
@@ -132,7 +232,7 @@ function removeChildren(parent) {
 
 // ----- On-page load grid initialization ----- //
 for (let i = 0; i < 1; i++) {
-    gridSize = 32;
+    gridSize = 16;
     makeGrid(gridSize);
 }
 
@@ -144,4 +244,17 @@ function overlayOn() {
 
 function overlayOff() {
     document.getElementById("aboutOverlay").style.display = "none";
+}
+
+// Compact lighten/darken functions by 
+// https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#stackoverflow-archive-begin
+
+const RGB_Linear_Shade=(p,c)=>{
+    var i=parseInt,r=Math.round,[a,b,c,d]=c.split(","),P=p<0,t=P?0:255*p,P=P?1+p:1-p;
+    return"rgb"+(d?"a(":"(")+r(i(a[3]=="a"?a.slice(5):a.slice(4))*P+t)+","+r(i(b)*P+t)+","+r(i(c)*P+t)+(d?","+d:")");
+}
+
+const RGB_Log_Shade=(p,c)=>{
+    var i=parseInt,r=Math.round,[a,b,c,d]=c.split(","),P=p<0,t=P?0:p*255**2,P=P?1+p:1-p;
+    return"rgb"+(d?"a(":"(")+r((P*i(a[3]=="a"?a.slice(5):a.slice(4))**2+t)**0.5)+","+r((P*i(b)**2+t)**0.5)+","+r((P*i(c)**2+t)**0.5)+(d?","+d:")");
 }

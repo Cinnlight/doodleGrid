@@ -71,7 +71,7 @@ body {
     display: none;
     flex-direction: column;
     align-self: center;
-    width: 75vh;
+    width: 100vw;
     height: 75vh;
     top: 15vh;
     background-color: #121212d0;
@@ -79,7 +79,9 @@ body {
 
 #overlayHeader {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    padding-top: 11.1rem;
+    padding-left: 28.5rem;
 }
 
 #overlayTxtContainer {
@@ -92,6 +94,7 @@ body {
     position: absolute;
     top: 45%;
     left: 50%;
+    width: 400px;
     padding: 1rem;
     border: solid 1px #3b3b3b;
     background-color: #121212a1;
@@ -115,18 +118,43 @@ a {
 /****** Side Bars  ******/
 /****** ---------- ******/
 
+#contentMenuContainer {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-left: 1rem;
+    align-self: center;
+}
+
+.capstone {
+    height: 5vw;
+    background-color: #3b3b3b;
+}
+
+#contentMenuCapTop {
+    border-radius: 50% 50% 0 0;
+}
+
+#contentMenuCapBot {
+    border-radius: 0 0 50% 50%;
+}
+
 .contentMenu {
     display: flex;
     flex-direction: column;
     background-color: #3b3b3b;
-    width: 5rem;
+    width: 9rem;
+    justify-self: center;
+    align-self: center;
+    height: 70vh;
 }
 
 #tools {
     color: #f9f9f9;
     border-bottom: solid 1px #121212;
     text-align: center;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
 }
 
 #colorMenu {
@@ -139,6 +167,33 @@ a {
     justify-content: center;
 }
 
+#colorChoiceContainer {
+    padding: 1rem 0.5rem 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+#colorChoice {
+    padding: 0;
+    --color: black;
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+}
+
+#colorChoice::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    width: 150%;
+    height: 150%;
+    background: var(--color);
+    border-radius: 50%;
+}
+
 #colorTxt {
     text-align: center;
 }
@@ -148,14 +203,14 @@ label {
     text-align: center;
 }
 
-#setColor {
-    height: 1.1rem;
-    width: 1.1rem;
+#colorBtnContainer {
+    margin: 0 1rem;
 }
 
 .colorBtn {
     height: 2rem;
     width: 2rem;
+    border-radius: 50%;
 }
 
 #eraserTxt {
@@ -164,12 +219,38 @@ label {
 }
 
 #eraserBtn {
-    margin-right: 1rem;
+    margin: 0 1rem;
 }
 
 #eraserImg {
     width: 32px;
 }
+
+.toggleBtn {
+    border-bottom: solid 1px #121212;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: whitesmoke;
+    background-color: #3b3b3b;
+    height: 2.8rem;
+    width: 9rem
+}
+
+.toggleBtn:hover {
+    background-color: #525252;
+    transition: 0.2s;
+}
+
+.toggleBtn.toggleBtnActive {
+    background-color: #525252;
+}
+
+#toggleBrighten {
+    border-top: solid 1px #121212;
+    margin-top: 1rem;
+}
+
 /****** ---------- ******/
 
 
@@ -182,6 +263,15 @@ label {
     min-width: min-content;
     justify-content: space-between;
     -webkit-user-drag: none;
+}
+
+#gridCenteringContainer {
+    margin-left: 1rem;
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+    justify-content: center;
+    padding-right: 9rem;
 }
 
 #gridContainer {
@@ -213,6 +303,10 @@ label {
     flex: 1;
     border: .5px solid rgba(128, 128, 128, 0.5);
     -webkit-user-drag: none;
+}
+
+#gridSquareBorderless {
+    border: none;
 }
 /****** ---------- ******/
 
